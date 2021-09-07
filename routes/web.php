@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])
         ->name('profile.update');
+    Route::get('data', [\App\Http\Controllers\DataController::class, 'show'])
+        ->name('datas.show');
+    Route::resource('datas', DataController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
